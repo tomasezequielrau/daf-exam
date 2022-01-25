@@ -1,0 +1,9 @@
+name: da_exam
+channels:
+  - conda-forge
+dependencies:
+  - pip=21.3.1
+  - pip:
+    - notebook==6.4.7
+    - pandas==1.4.0
+    - pandas-gbq==0.17.0
