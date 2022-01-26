@@ -1,3 +1,5 @@
+"""This script generate a database of different weather station in Uruguay from the BigQuery public dataset."""
+
 import pandas as pd
 import sqlite3
 
@@ -40,6 +42,6 @@ if __name__ == "__main__":
     engine = sqlite3.connect('weather_station.db')
     sqlite_table = "weather_station"
 
-    project_name = "peya-data-analyt-factory-stg"
+    project_name = "YOUR-PROJECT-NAME"
     data = pd.read_gbq(QUERY, project_id=project_name)
     data.to_sql(sqlite_table, engine, if_exists='replace')
