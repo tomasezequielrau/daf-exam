@@ -35,6 +35,7 @@ SELECT
 , wp.* except(weather_station_id, wban)
 FROM weather_stations_gsod ws
 JOIN weather_prog_gsod wp ON wp.weather_station_id = ws.weather_station_id and wp.wban = ws.wban
+WHERE ws.weather_station_name != "MERCEDES/RICARDO DE"
 ORDER BY weather_station_name, date
 """
 
@@ -43,5 +44,6 @@ if __name__ == "__main__":
     sqlite_table = "weather_station"
 
     project_name = "YOUR-PROJECT-NAME"
+    project_name = "peya-data-analyt-factory-stg"
     data = pd.read_gbq(QUERY, project_id=project_name)
     data.to_sql(sqlite_table, engine, if_exists='replace')
